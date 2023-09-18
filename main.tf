@@ -44,7 +44,6 @@ resource "aws_s3_object" "app" {
   bucket       = aws_s3_bucket.app.id
   content      = file("./assets/index.html")
   content_type = "text/html"
-  acl = "public-read"
 }
 
 
