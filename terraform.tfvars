@@ -1,3 +1,3 @@
 region = "us-east-1"
-label  = "hashicorp.kubu"
+label  = "hashicorp.fun"
 app    = "terramino"
