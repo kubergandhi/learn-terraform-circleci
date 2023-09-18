@@ -15,10 +15,21 @@ resource "aws_s3_bucket" "app" {
     Name          = "App Bucket"
     public_bucket = true
   }
-
   bucket        = "${var.app}.${var.label}.${random_uuid.randomid.result}"
   force_destroy = true
 }
+
+
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = aws_s3_bucket.app.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.app.id
 
