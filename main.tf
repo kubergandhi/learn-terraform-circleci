@@ -23,7 +23,7 @@ resource "aws_s3_bucket" "app" {
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.app.id
 
-  policy = <<POLICY
+  policy = <<EOF
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -36,7 +36,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
     }
   ]
 }
-POLICY
+EOF
 }
 
 resource "aws_s3_object" "app" {
