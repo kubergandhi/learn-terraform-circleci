@@ -30,21 +30,6 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 
-resource "aws_s3_bucket_policy" "bucket_policy" {
-  bucket = aws_s3_bucket.app.id
-
-  policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": "s3:GetObject",
-        "Resource": "arn:aws:s3:::${aws_s3_bucket.app.id}/*"
-      }
-    ]
-  })
-}
 
 resource "aws_s3_object" "app" {
   key          = "index.html"
