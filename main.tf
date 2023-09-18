@@ -29,14 +29,17 @@ resource "aws_s3_bucket_public_access_block" "example" {
   restrict_public_buckets = false
 }
 
-
+resource "aws_s3_bucket_acl" "bucket" {
+  bucket = aws_s3_bucket.app.id
+  acl    = "public-read"
+}
 
 resource "aws_s3_object" "app" {
   key          = "index.html"
   bucket       = aws_s3_bucket.app.id
   content      = file("./assets/index.html")
   content_type = "text/html"
-  acl = "public-read"
+  
 }
 
 
