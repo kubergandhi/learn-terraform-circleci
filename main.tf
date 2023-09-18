@@ -32,7 +32,7 @@ resource "aws_s3_bucket_public_access_block" "example" {
 resource "aws_s3_bucket_acl" "bucket" {
   bucket = aws_s3_bucket.app.id
   acl    = "public-read"
-  depends_on = [aws_s3_bucket.app.id]
+  depends_on = [aws_s3_bucket.app]
 }
 
 resource "aws_s3_object" "app" {
@@ -40,7 +40,7 @@ resource "aws_s3_object" "app" {
   bucket       = aws_s3_bucket.app.id
   content      = file("./assets/index.html")
   content_type = "text/html"
-  depends_on = [aws_s3_bucket.app.id]
+  depends_on = [aws_s3_bucket.app]
 }
 
 
